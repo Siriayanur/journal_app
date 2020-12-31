@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
+import 'package:journal_app/src/providers/entry_provider.dart';
+import 'package:journal_app/src/screens/home.dart';
+import 'package:provider/provider.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        accentColor: Colors.pinkAccent,
-        primaryColor: Colors.black
-      ),
-      home: Scaffold(
-        body: Center(
-          child: Text('Home Page'),
+    return ChangeNotifierProvider(
+      create: (context) => EntryProvider(),
+      child: MaterialApp(
+        theme: ThemeData(
+          accentColor: Colors.pinkAccent,
+          primaryColor: Colors.black,
+          textTheme: GoogleFonts.patrickHandScTextTheme()
+        ),
+        home: Scaffold(
+          body: HomeScreen(),
         ),
       ),
     );
